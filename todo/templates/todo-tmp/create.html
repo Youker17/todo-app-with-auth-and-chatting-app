@@ -1,0 +1,26 @@
+{% extends 'todo-tmp/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<form action="{{action}}" class="container card card-white" style="margin-top:55px;" method='post'>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="formGroupExampleInput">TASK NAME</label>
+          <input type="text" name="name" value="{{inp_name}}" class="form-control" id="formGroupExampleInput" >
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">DATE</label>
+          <input type="date" name="date" class="form-control"  value="{{inp_date}}" id="formGroupExampleInput2" >
+        </div>
+        <button type="submit" class="btn btn-primary">save</button>
+      </form>
+{% else %}
+      <h1>login <a href="/accounts/login/">here</a> to create tasks </h1>
+{% endif %}
+
+
+
+ {% endblock content %}
+    

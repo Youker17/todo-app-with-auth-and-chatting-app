@@ -1,0 +1,43 @@
+{% extends 'registration/base.html' %}
+{% block content %}
+
+{% comment %} <form method="post">
+    {% csrf_token %}
+    {{form}}
+    <p>dont have an account ? <a href="/accounts/register/">create one here!</a></p>
+    <button class="btn btn-success" type="submit">login</button>
+</form> {% endcomment %}
+<form style = "margin-top:50px;" class="container card card-white" method="post">
+  <h1 style="display:flex; justify-content:space-around;" class="container">login</h1>
+    <!-- Email input -->
+    {% csrf_token %}
+    <div class="form-outline mb-4">
+      <input type="text" name="username" id="form2Example1" class="form-control" />
+      <label class="form-label" for="form2Example1">Username</label>
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" name="password" id="form2Example2" class="form-control" />
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+      </div>
+  
+      <div class="col">
+        <!-- Simple link -->
+        <a href="/accounts/reset-password/">Forgot password?</a>
+      </div>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="submit" style="display:flex; justify-content:space-around;" class="btn btn-primary btn-block mb-4">Sign in</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member? <a href="/accounts/register/">Register</a></p>
+    </div>
+  </form>
+{% endblock content %}

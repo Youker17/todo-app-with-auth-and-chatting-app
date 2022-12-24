@@ -1,0 +1,52 @@
+{% extends 'todo-tmp/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if user.is_authenticated %}
+        <strong>hello {{user.username}} </strong>
+        {% else %}
+        <p>you are not logged in!</p>
+        {% endif %}
+        <div class="col-md-12">
+            <div class="card card-white">
+                <div class="card-body">
+                    {% comment %} <form action="javascript:void(0);">
+                        <input type="text" class="form-control add-task" placeholder="New Task...">
+                     </form>
+                    <ul class="nav nav-pills todo-nav">
+                        <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
+                        <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
+                        <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
+                    </ul>
+                    <div class="todo-list"> {% endcomment %}
+
+                    {% if user.is_authenticated %}
+                    <div style="display:flex; justify-content:space-around;">
+                    <a href="/create/" class="btn btn-outline-info">Create a Task</a>
+                    </div>
+                    {% for i in tasks %}
+                    <div style='border-bottom:1px black solid; margin:5px;' class="todo-item">
+                            <div  class="checker" style="display:flex; justify-content:space-between;"><span class=""><form action="/delete/{{i.id}}/" method="delete"><input name="done" class="btn btn-danger" value="done" type="submit"></form></span> <span><a href="/update/{{i.id}}/">Update</a></span></div>
+                            <span>{{i.name }}<span style="color:grey; font-size:10px;">{{i.date}}</span></span>
+                            <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+                        </div>{% endfor %}
+                        {% else %}
+                        <h1>login <a href="/accounts/login/">here</a> to access your tasks </h1>
+                        {% endif %}
+                    
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+    
+
+
+
+

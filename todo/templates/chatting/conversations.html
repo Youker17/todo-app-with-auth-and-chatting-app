@@ -1,0 +1,13 @@
+{% extends 'todo-tmp/base.html' %}
+
+
+{% block content %}
+{% for i in result %}
+{% if i is not None %}<div style='border-bottom:1px black solid; margin:5px;' class="todo-item">
+    <img src="{{i.profile.img.url}}" class="rounded-circle p-1 bg-primary" width="110" height="110">
+    <span>{{i.username }}</span>
+    <hr>
+    <div  class="checker" style="display:flex; justify-content:space-between;"><span class=""><a class="btn btn-danger" href="/chatting/conversations/{{i.id}}/">message</a></span> </div>
+</div>{% endif %}
+{% endfor %}
+{% endblock content %}

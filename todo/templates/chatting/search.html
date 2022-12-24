@@ -1,0 +1,42 @@
+{% extends 'todo-tmp/base.html' %}
+
+{% block content %}
+
+<form method="get">
+    <div class="input-group">
+        <div class="form-outline">
+          <input type="search" name="username" class="form-control" />
+          <label class="form-label" for="username">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+</form>
+
+
+
+
+{% for i in result %}
+{% if i is not None %}<div style='border-bottom:1px black solid; margin:5px;' class="todo-item">
+    <img src="{{i.profile.img.url}}" class="rounded-circle p-1 bg-primary" width="110" height="110">
+    <span>{{i.username }}</span>
+    <hr>
+    <div  class="checker" style="display:flex; justify-content:space-between;"><span class=""><a class="btn btn-danger" href="/chatting/conversations/{{i.id}}/">message</a></span> </div>
+</div>{% endif %}
+
+
+
+
+{% endfor %}
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

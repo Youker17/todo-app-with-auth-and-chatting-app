@@ -1,0 +1,66 @@
+{% extends 'todo-tmp/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}<form action="" method='post' enctype="multipart/form-data">
+{{debug}}
+{% csrf_token %}
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{profile_pic}}" class="rounded-circle p-1 bg-primary" width="110" height="110">
+                            <div class="mt-3">
+                                <h4>{{user.username}}</h4>
+                                <div class="mb-3">
+                                    <label class="form-label">upload a profile picture</label>
+                                    <input class="form-control" type="file" name="pic" accept="image/*">
+                                  </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="username" class="form-control" value="{{user.username}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="email" class="form-control" value="{{user.email}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="submit" class="btn btn-primary px-4" value="Save Changes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% else %}
+
+<center><h1>login <a href="/accounts/login/">here</a> to access your profile</h1></center>
+
+{% endif %}
+
+{% endblock content %}
